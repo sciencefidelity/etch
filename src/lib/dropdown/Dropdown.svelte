@@ -68,7 +68,7 @@
 
 <div class="container">
   <!-- <button class="btn">Show menu</button> -->
-  <p class="">
+  <p class="" contenteditable="true">
     <!-- This is <span class="highlighted" on:click={handleHighlight}>some text</span> as an example -->
     This is some text as an example
   </p>
@@ -166,5 +166,9 @@
 
   .hidden {
     visibility: hidden;
+  }
+
+  [contenteditable] {
+    outline: none;
   }
 </style>
