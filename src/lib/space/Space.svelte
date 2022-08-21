@@ -10,6 +10,7 @@
 <div class="guide four" />
 <div class="guide five" />
 <div class="guide six" />
+
 <div class="container">
   <div class="widgets">
     <div class="widget plus"><Plus /></div>
@@ -18,6 +19,7 @@
   </div>
   <div class="content"><p>This is the first paragraph.</p></div>
 </div>
+
 <div class="container indented-1">
   <div class="widgets">
     <div class="widget plus"><Plus /></div>
