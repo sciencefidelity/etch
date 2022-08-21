@@ -1,0 +1,9 @@
+<svg
+  fill="currentColor"
+  stroke-width="0"
+  viewBox="0 0 12 16"
+  height="100%"
+  width="100%"
+  xmlns="http://www.w3.org/2000/svg"
+  ><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z" /></svg
+>
