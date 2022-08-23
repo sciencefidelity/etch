@@ -2,6 +2,13 @@
   import Plus from './icons/Plus.svelte'
   import Grabber from './icons/Grabber.svelte'
   import Foldable from './icons/Foldable.svelte'
+
+  let done = true
+
+  const handleClick = () => {
+    done = !done
+    console.log(done)
+  }
 </script>
 
 <div class="guide one" />
@@ -11,7 +18,7 @@
 <div class="guide five" />
 <div class="guide six" />
 
-<div class="container">
+<div class="container indented-0">
   <div class="widgets">
     <div class="widget plus"><Plus /></div>
     <div class="widget grabber"><Grabber /></div>
@@ -20,7 +27,7 @@
   <div class="content"><p>This is the first paragraph.</p></div>
 </div>
 
-<div class="container indented-1">
+<div class="container indented-0">
   <div class="widgets">
     <div class="widget plus"><Plus /></div>
     <div class="widget grabber"><Grabber /></div>
@@ -35,17 +42,49 @@
     </p>
   </div>
 </div>
-<div class="container indented-2">
+<div class="container indented-0">
+  <div class="widgets">
+    <div class="widget plus"><Plus /></div>
+    <div class="widget grabber"><Grabber /></div>
+    <div class="widget foldable"><Foldable /></div>
+  </div>
+  <div class="content">
+    <p>This is indented even more.</p>
+  </div>
+</div>
+
+<div class="container indented-0">
   <div class="widgets">
     <div class="widget plus"><Plus /></div>
     <div class="widget grabber"><Grabber /></div>
     <div class="widget foldable hidden"><Foldable /></div>
   </div>
   <div class="content">
-    <p>This is indented even more.</p>
+    <ul>
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+      <li>Fourth</li>
+    </ul>
   </div>
 </div>
-<div class="container">
+
+<div class="container indented-0">
+  <div class="widgets">
+    <div class="widget plus"><Plus /></div>
+    <div class="widget grabber"><Grabber /></div>
+    <div class="widget foldable hidden"><Foldable /></div>
+  </div>
+  <div class="content">
+    <ul class="todo">
+      <li>First</li>
+      <li>Second</li>
+      <li class={done ? '' : 'checked'} on:click={handleClick}>Third</li>
+      <li>Fourth</li>
+    </ul>
+  </div>
+</div>
+<div class="container indented-0">
   <div class="widgets">
     <div class="widget plus"><Plus /></div>
     <div class="widget grabber"><Grabber /></div>
@@ -71,22 +110,22 @@
   }
 
   .one {
-    left: 3.8rem;
+    left: 4.7rem;
     background: lime;
   }
 
   .two {
-    left: 6.8rem;
+    left: 7.7rem;
     background: lime;
   }
 
   .three {
-    left: 9.8rem;
+    left: 10.7rem;
     background: lime;
   }
 
   .four {
-    left: 12.8rem;
+    left: 13.7rem;
     background: lime;
   }
 
@@ -96,10 +135,12 @@
   }
 
   .widgets {
+    width: 60.2px;
     display: flex;
     flex-direction: row;
     height: 1.2rem;
     margin-inline: 0.3rem;
+    justify-content: right;
   }
 
   .widget {
@@ -112,7 +153,7 @@
   .plus,
   .grabber {
     opacity: 0;
-    visibility: hidden;
+    /* visibility: hidden; */
     transition: opacity 0.2s ease-in-out;
   }
 
@@ -127,8 +168,9 @@
   }
 
   .foldable {
-    margin-left: 0.5rem;
+    /* margin-left: 0.5rem; */
     color: hsl(0, 0%, 20%);
+    /* transform: rotate(90deg); */
   }
 
   .foldable-inline {
@@ -145,8 +187,37 @@
     font-size: 1.3rem;
     color: hsl(0, 0%, 20%);
     flex: 2;
-    p {
+    p,
+    ul {
       margin: 0.3rem;
+    }
+    ul {
+      padding-left: 1.8rem;
+    }
+    .todo {
+      list-style-type: none;
+      padding-left: 0.6rem;
+    }
+  }
+
+  .todo {
+    .checked {
+      text-decoration: line-through;
+      color: hsl(0, 0%, 50%);
+    }
+    li::before {
+      position: relative;
+      top: 0.1rem;
+      left: -0.5rem;
+      content: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='100%25' width='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='none' d='M0 0h24v24H0z'%3E%3C/path%3E%3Cpath d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+      display: inline-block;
+      height: 1.2rem;
+      width: 1.2rem;
+      background-image: url();
+      cursor: pointer;
+    }
+    .checked::before {
+      content: url("data:image/svg+xml,%3Csvg stroke='currentColor' fill='currentColor' stroke-width='0' viewBox='0 0 24 24' height='100%25' width='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cg%3E%3Cpath fill='none' d='M0 0h24v24H0z'%3E%3C/path%3E%3Cpath d='M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-.997-6l7.07-7.071-1.414-1.414-5.656 5.657-2.829-2.829-1.414 1.414L11.003 16z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
     }
   }
 
@@ -162,6 +233,10 @@
 
   .indented-2 {
     margin-left: 6rem;
+  }
+
+  .indented-3 {
+    margin-left: 9rem;
   }
 
   .hidden {
