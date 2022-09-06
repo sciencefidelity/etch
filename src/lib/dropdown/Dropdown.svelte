@@ -29,6 +29,7 @@
     document.addEventListener('keydown', handleClick)
     document.addEventListener('selectionchange', () => {
       selection = document.getSelection()
+      if (!selection) return
       handleSelection(selection)
     })
   })
